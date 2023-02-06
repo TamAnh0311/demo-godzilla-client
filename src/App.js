@@ -1,16 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import { ReactKeycloakProvider } from "@react-keycloak/web";
+import logo from './logo.svg'
+import './App.css'
+import { ReactKeycloakProvider } from "@react-keycloak/web"
 import keycloak from "./utils/keycloak"
 
 function App() {
 
+  const onKeycloakTokens = (tokens) => {
+    localStorage.setItem('refreshToken',tokens.refreshToken)
+    console.log('localStorage', localStorage.getItem('refreshToken'))
+  }
+
   return (
     <div className="App">
-      <ReactKeycloakProvider authClient={keycloak} initOptions={{
-        onLoad: "login-required",
-        checkLoginIframe: false,
-      }} >
+      <ReactKeycloakProvider
+          authClient={keycloak}
+          initOptions={{
+            onLoad: "login-required",
+            checkLoginIframe: false,
+          }}
+          onTokens={(tokens) => onKeycloakTokens(tokens)}
+      >
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
