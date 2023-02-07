@@ -1,10 +1,11 @@
-import Keycloak from "keycloak-js";
+import Keycloak from 'keycloak-js';
+
 const keycloak = new Keycloak({
-  url: "http://localhost:9090/",
-  realm: "DemoGodZilla",
-  clientId: "DemoGodZillaKeycloak",
+  url: 'http://localhost:9090/',
+  realm: 'DemoGodZilla',
+  clientId: 'DemoGodZillaKeycloak',
   publicClient: true,
-  sslRequired: 'external',
+  sslRequired: 'external'
 });
 
 export default keycloak;
