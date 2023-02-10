@@ -1,16 +1,11 @@
 import axios from 'axios';
-import { useKeycloak } from '@react-keycloak/web'
 
 axios.defaults.baseURL = process.env.REACT_APP_PREFIX_URL;
 
-const { keycloak } = useKeycloak()
-
-console.log('keycloak', keycloak.token)
-
 const BaseService = {
 
-  setHeader() {
-    axios.defaults.headers.common.Authorization = `Token ${keycloak.token}`;
+  setHeaderAuth(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
 
   query(resource, params) {
