@@ -6,7 +6,7 @@ import BaseService from './services/baseService'
 
 function App() {
   const onKeycloakTokens = (tokens) => {
-    localStorage.setItem('refreshToken', tokens.refreshToken)
+    localStorage.setItem('refreshToken: ', tokens.refreshToken)
     BaseService.setHeaderAuth(tokens.token)
     BaseService.get('/core-api', 'products')
   }
