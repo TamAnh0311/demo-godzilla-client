@@ -2,11 +2,13 @@ import { ReactKeycloakProvider } from '@react-keycloak/web'
 import keycloak from './utils/keycloak'
 import logo from './logo.svg'
 import './App.css'
+import BaseService from './services/baseService'
 
 function App() {
   const onKeycloakTokens = (tokens) => {
     localStorage.setItem('refreshToken', tokens.refreshToken)
-    console.log('localStorage', localStorage.getItem('refreshToken'))
+    BaseService.setHeaderAuth(tokens.token)
+    BaseService.get('/core-api', 'products')
   }
 
   return (
