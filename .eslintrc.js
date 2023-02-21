@@ -22,6 +22,7 @@ module.exports = {
   ],
   rules: {
     'react/jsx-one-expression-per-line': [0],
+    'import/prefer-default-export': 0,
     'react/react-in-jsx-scope': [0],
     'new-cap': [2, { capIsNewExceptions: ['List', 'Map', 'Set'] }],
     'react/no-multi-comp': 0,

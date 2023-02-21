@@ -3,6 +3,7 @@ import keycloak from './utils/keycloak'
 import logo from './logo.svg'
 import './App.css'
 import BaseService from './services/baseService'
+import Header from './components/header/Header'
 
 function App() {
   const onKeycloakTokens = (tokens) => {
@@ -21,6 +22,7 @@ function App() {
         }}
         onTokens={(tokens) => onKeycloakTokens(tokens)}
       >
+        <Header />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
