@@ -15,7 +15,7 @@ const BaseService = {
   },
 
   get(resource, slug = '') {
-    return axios.get(`${resource}/${slug}`).catch((error) => {
+    return axios.get(`core-api/${resource}${slug ? `/${slug}` : ''}`).catch((error) => {
       throw new Error(`[RWV] BaseService ${error}`);
     });
   },

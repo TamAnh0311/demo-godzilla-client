@@ -1,0 +1,22 @@
+.logo {
+  height: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff7100;
+  transition: all 0.1s linear;
+}
+
+.logo__text {
+  height: 50px;
+  color: #ff7100;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo__mobile {
+  width: 50px;
+  margin: 7px;
+}
