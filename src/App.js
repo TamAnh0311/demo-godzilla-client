@@ -1,18 +1,16 @@
 import { ReactKeycloakProvider } from '@react-keycloak/web'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PageNotFound from 'pages/404';
-import keycloak from 'utils/keycloak'
 import BaseService from 'services/baseService'
-import AppLayout from 'layouts/AppLayout';
-import Dashboard from 'pages/Dashboard';
+import keycloak from 'utils/keycloak'
+import { Provider } from 'react-redux';
+import { store } from 'redux/store';
 import 'utils/vuetify.min.css'
 import 'App.css'
+import RouteList from 'routes';
 
 function App() {
   const onKeycloakTokens = (tokens) => {
     localStorage.setItem('refreshToken', tokens.refreshToken)
     BaseService.setHeaderAuth(tokens.token)
-    BaseService.get('products')
   }
 
   return (
@@ -25,14 +23,9 @@ function App() {
         }}
         onTokens={(tokens) => onKeycloakTokens(tokens)}
       >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+          <RouteList />
+        </Provider>
       </ReactKeycloakProvider>
     </div>
   );
