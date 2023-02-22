@@ -1,8 +1,7 @@
-import { Button, Layout } from 'antd';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Mobile, TabletAndMore } from '../../utils/responsive'
-import UserMenu from './UserMenu';
-import AppLogo from '../AppLogo';
+import { Layout } from 'antd';
+import { Mobile, TabletAndMore } from 'utils/responsive'
+import AppLogo from 'components/AppLogo';
+import UserMenu from 'components/AppHeader/UserMenu';
 
 const { Header } = Layout;
 

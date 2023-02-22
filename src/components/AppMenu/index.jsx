@@ -8,7 +8,7 @@ import {
   QuestionCircleOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import AppLogo from '../AppLogo';
+import AppLogo from 'components/AppLogo';
 
 const navigation = [
   {

@@ -1,6 +1,6 @@
-import './AppLogo.css'
 import { Button } from 'antd';
-import { Mobile, TabletAndMore } from '../../utils/responsive'
+import { Mobile, TabletAndMore } from 'utils/responsive'
+import './AppLogo.css'
 
 function AppLogo({ collapsed, toggleCollapsed }) {
   const appTitle = collapsed ? 'mS' : 'myShop'

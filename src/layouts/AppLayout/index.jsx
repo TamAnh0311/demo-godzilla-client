@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom'
 import { Layout } from 'antd';
-import { Mobile, TabletAndMore } from '../../utils/responsive'
-import AppHeader from '../../components/AppHeader';
+import { Mobile, TabletAndMore } from 'utils/responsive'
+import AppHeader from 'components/AppHeader';
 
 function Index() {
   const [collapsed, setCollapsed] = useState(false);
