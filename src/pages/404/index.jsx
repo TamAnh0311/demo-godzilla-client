@@ -1,5 +1,5 @@
-import './404.css';
 import Title from 'antd/es/typography/Title';
+import './404.css';
 
 function PageNotFound() {
   return (

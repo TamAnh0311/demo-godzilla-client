@@ -1,5 +1,3 @@
-import { Mobile, TabletAndMore } from '../../utils/responsive';
-
 function Dashboard() {
   return (
     <h1>
