@@ -1,15 +1,18 @@
 import { ReactKeycloakProvider } from '@react-keycloak/web'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import keycloak from './utils/keycloak'
-import logo from './logo.svg'
-import './App.css'
 import BaseService from './services/baseService'
-import Header from './components/header/Header'
+import AppLayout from './layouts/AppLayout';
+import PageNotFound from './pages/404';
+import Dashboard from './pages/Dashboard';
+import './utils/vuetify.min.css'
+import './App.css'
 
 function App() {
   const onKeycloakTokens = (tokens) => {
-    localStorage.setItem('refreshToken: ', tokens.refreshToken)
+    localStorage.setItem('refreshToken', tokens.refreshToken)
     BaseService.setHeaderAuth(tokens.token)
-    BaseService.get('/core-api', 'products')
+    BaseService.get('products')
   }
 
   return (
@@ -22,21 +25,14 @@ function App() {
         }}
         onTokens={(tokens) => onKeycloakTokens(tokens)}
       >
-        <Header />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </ReactKeycloakProvider>
     </div>
   );
