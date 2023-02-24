@@ -1,39 +1,33 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = process.env.REACT_APP_PREFIX_URL;
+import axiosMiddleware from 'utils/axiosMiddleware'
 
 const BaseService = {
 
-  setHeaderAuth(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-
   query(resource, params) {
-    return axios.get(resource, params).catch((error) => {
+    return axiosMiddleware.get(resource, params).catch((error) => {
       throw new Error(`[RWV] BaseService ${error}`);
     });
   },
 
   get(resource, slug = '') {
-    return axios.get(`core-api/${resource}${slug ? `/${slug}` : ''}`).catch((error) => {
+    return axiosMiddleware.get(`core-api/${resource}${slug ? `/${slug}` : ''}`).catch((error) => {
       throw new Error(`[RWV] BaseService ${error}`);
     });
   },
 
   post(resource, params) {
-    return axios.post(`${resource}`, params);
+    return axiosMiddleware.post(`${resource}`, params);
   },
 
   update(resource, slug, params) {
-    return axios.put(`${resource}/${slug}`, params);
+    return axiosMiddleware.put(`${resource}/${slug}`, params);
   },
 
   put(resource, params) {
-    return axios.put(`${resource}`, params);
+    return axiosMiddleware.put(`${resource}`, params);
   },
 
   delete(resource) {
-    return axios.delete(resource).catch((error) => {
+    return axiosMiddleware.delete(resource).catch((error) => {
       throw new Error(`[RWV] BaseService ${error}`);
     });
   }

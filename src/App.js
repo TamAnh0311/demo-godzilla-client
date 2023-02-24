@@ -1,16 +1,18 @@
 import { ReactKeycloakProvider } from '@react-keycloak/web'
-import BaseService from 'services/baseService'
 import keycloak from 'utils/keycloak'
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import 'utils/vuetify.min.css'
 import 'App.css'
 import RouteList from 'routes';
+import { useState } from 'react';
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false)
+
   const onKeycloakTokens = (tokens) => {
     localStorage.setItem('refreshToken', tokens.refreshToken)
-    BaseService.setHeaderAuth(tokens.token)
+    setAuthenticated(true)
   }
 
   return (
@@ -24,11 +26,12 @@ function App() {
         onTokens={(tokens) => onKeycloakTokens(tokens)}
       >
         <Provider store={store}>
-          <RouteList />
+          {authenticated
+            ? <RouteList /> : <h2 className="h-screen d-flex justify-center align-center">Authenticating....</h2>}
         </Provider>
       </ReactKeycloakProvider>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -12,8 +12,6 @@ import {
   PRODUCT_FAILED
 } from '../actions/types';
 
-// import { deleteProductSaga, updateProductSaga, getProductSaga } from '../actions/productActions';
-
 export function* onDeleteProductSaga({ payload }) {
   try {
     yield call(deleteProduct, payload);
