@@ -1,14 +1,16 @@
+import { useKeycloak } from '@react-keycloak/web';
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from 'redux/actions/productActions';
-import { useKeycloak } from '@react-keycloak/web'
+import BaseService from 'services/baseService';
 
-function Dashboard() {
+function Category() {
   const dispatch = useDispatch();
   const { keycloak } = useKeycloak()
   const products = useSelector((state) => state.productReducers.products);
 
-  console.log('1: ', products)
+  console.log('2: ', products)
 
   useEffect(() => {
     if (keycloak.authenticated) {
@@ -17,10 +19,8 @@ function Dashboard() {
   }, [dispatch]);
 
   return (
-    <h1>
-      Dashboard
-    </h1>
-  );
+    <div>abc ds</div>
+  )
 }
 
-export default Dashboard;
+export default Category;

@@ -2,7 +2,7 @@ import {
   call, put, takeLatest, all
 } from 'redux-saga/effects';
 
-import { getAllProducts, updateProduct, deleteProduct } from 'services/productService';
+import { getAllProducts, createProduct, deleteProduct } from 'services/productService';
 
 import {
   UPDATE_PRODUCT,
@@ -31,7 +31,7 @@ export function* onDeleteProductSaga({ payload }) {
 
 export function* onUpdateProductSaga({ payload }) {
   try {
-    yield call(updateProduct, payload);
+    yield call(createProduct, payload);
     yield put({
       type: PRODUCT_SUCCESS,
       payload: { products: payload }

@@ -1,5 +1,4 @@
 import { ReactKeycloakProvider } from '@react-keycloak/web'
-import BaseService from 'services/baseService'
 import keycloak from 'utils/keycloak'
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
@@ -10,7 +9,8 @@ import RouteList from 'routes';
 function App() {
   const onKeycloakTokens = (tokens) => {
     localStorage.setItem('refreshToken', tokens.refreshToken)
-    BaseService.setHeaderAuth(tokens.token)
+    // BaseService.setHeaderAuth(tokens.token)
+    console.log('App: ')
   }
 
   return (

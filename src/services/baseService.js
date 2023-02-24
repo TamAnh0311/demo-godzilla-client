@@ -1,12 +1,22 @@
 import axios from 'axios';
+import keycloak from 'utils/keycloak';
 
-axios.defaults.baseURL = process.env.REACT_APP_PREFIX_URL;
+keycloak.init({
+  // onLoad: 'login-required'
+}).then((auth) => {
+  if (auth) {
+    axios.defaults.baseURL = process.env.REACT_APP_PREFIX_URL;
+    axios.defaults.headers.common.Authorization = `Bearer ${keycloak.token}`;
+    const token = keycloak;
+    console.log('Base service: ', keycloak.token)
+    console.log('Token: ', token.token)
+  }
+});
 
 const BaseService = {
 
-  setHeaderAuth(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
+  // setHeaderAuth(token) {
+  // },
 
   query(resource, params) {
     return axios.get(resource, params).catch((error) => {
