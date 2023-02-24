@@ -46,9 +46,11 @@ export function* onGetProductSaga() {
   try {
     const { data } = yield call(getAllProducts);
 
+    const listProduct = data.data.records
+
     yield put({
       type: PRODUCT_SUCCESS,
-      payload: data
+      payload: listProduct
     });
   } catch (error) {
     yield put({

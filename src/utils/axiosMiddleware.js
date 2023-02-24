@@ -6,7 +6,6 @@ axios.defaults.baseURL = process.env.REACT_APP_PREFIX_URL;
 axios.interceptors.request.use(
   async (config) => {
     if (keycloak?.token) {
-      console.log(2, keycloak.token)
       // eslint-disable-next-line no-param-reassign
       config.headers = {
         ...config.headers,

@@ -39,7 +39,7 @@ const productReducers = (state = initalState, action) => {
       return {
         ...state,
         isLoading: false,
-        products: action.payload.data,
+        products: action.payload,
         error: null
       };
     default:

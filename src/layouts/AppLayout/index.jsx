@@ -13,7 +13,7 @@ function Index() {
         collapsed={collapsed}
         toggleCollapsed={() => setCollapsed(!collapsed)}
       />
-      <div className="d-flex justify-center align-center w-100" style={{ minHeight: '93vh' }}>
+      <div className="d-flex justify-center pt-6 w-100" style={{ minHeight: '93vh' }}>
         <TabletAndMore>
           <div
             className="w-75"
